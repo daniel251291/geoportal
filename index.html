@@ -50,11 +50,7 @@
 <div id="sidebar">
 <h2>Farmacias Turno - Loja</h2>
 <a href="https://www.controlsanitario.gob.ec/turnos-de-farmacias-arcsa-2025/" target="_blank">
-  <img alt="ARCSA - Agencia Nacional de Regulación, Control y Vigilancia Sanitaria" 
-       src="https://www.controlsanitario.gob.ec/wp-content/uploads/2019/03/logo-arcsa-2019.png" 
-       style="width:150px; display:block; margin:10px auto; cursor:pointer; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,0.1);" 
-       onError="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Logo_ARCSA.svg/512px-Logo_ARCSA.svg.png'"
-       title="Ir a turnos de farmacias ARCSA 2025"/>
+  <img alt="ARCSA" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Logo_ARCSA.svg/512px-Logo_ARCSA.svg.png" style="width:100px; display:block; margin-top:10px;"/>
 </a>
 
 <div class="layer-toggle">
@@ -63,6 +59,7 @@
 <button class="active" id="btn-cantones" onclick="toggleCapa('cantones', this)">🗺️ Cantones</button>
 <button class="active" id="btn-salud" onclick="toggleCapa('salud', this)">🏥 Salud</button>
 <button class="active" id="btn-laboratorios" onclick="toggleCapa('laboratorios', this)">🧪 Laboratorios</button>
+<button class="active" id="btn-limite" onclick="toggleCapa('limite', this)">🧭 Límite Provincial</button>
 <button class="active" id="btn-provincias" onclick="toggleCapa('provincias', this)">🗺️ Provincias EC</button>
 </div>
 
@@ -138,6 +135,7 @@ function initializeMap() {
     cantones: L.layerGroup().addTo(map),
     salud: L.layerGroup().addTo(map),
     laboratorios: L.layerGroup().addTo(map),
+    limite: L.layerGroup().addTo(map),
     provincias: L.layerGroup().addTo(map)
   };
 
@@ -742,6 +740,7 @@ function recargarDatos() {
     cargarFarmacias(),
     cargarCantones(),
     cargarLaboratorios(),
+    cargarLimiteProvincial(),
     cargarProvincias()
   ]).then(() => {
     addDebugInfo('✅ Recarga completa finalizada');
@@ -762,6 +761,7 @@ function iniciarAplicacion() {
     cargarFarmacias(),
     cargarCantones(),
     cargarLaboratorios(),
+    cargarLimiteProvincial(),
     cargarProvincias()
   ]).then(() => {
     addDebugInfo('✅ Todas las capas cargadas correctamente');
